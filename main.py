@@ -49,7 +49,7 @@ def get_country_data(iso, data):
 
 # main program
 
-df1 = get_data(save=True)
+#df1 = get_data(save=True)
 df1 = pd.read_csv("ISO_Data.csv", index_col = "index")
 print(df1)
 iso = ["DEU"]
@@ -61,7 +61,8 @@ print(len(countryData[:, 3]), countryData[:, 3])
 
 freq = 1/np.abs(np.fft.fftfreq(countryData[:, 3].shape[-1]))
 FFTData = np.abs(np.fft.fft(countryData[:, 3])) 
-FFTData_rel = FFTData/np.mean(FFTData)
+meanFFT = np.mean(FFTData)
+FFTData_rel = FFTData/meanFFT
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
